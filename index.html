@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tarun Mahajan — Senior Magento & Adobe Commerce Specialist with 10+ years of eCommerce engineering experience.">
+  <title>Tarun Mahajan | Magento & Adobe Commerce Specialist</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --surface: #11182b;
+      --surface-2: #17213a;
+      --text: #eef2ff;
+      --muted: #aab5d1;
+      --accent: #7c9cff;
+      --accent-2: #55d6be;
+      --border: rgba(255,255,255,.10);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #080d1b 0%, var(--bg) 40%, #0d1426 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(92%, var(--max)); margin: auto; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(8,13,27,.78);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 800; letter-spacing: .3px; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: .94rem; }
+    .nav-links a:hover { color: var(--text); }
+    .hero { padding: 110px 0 90px; }
+    .eyebrow {
+      display: inline-block; padding: 7px 12px; border: 1px solid var(--border);
+      border-radius: 999px; color: var(--accent-2); background: rgba(85,214,190,.06);
+      font-size: .85rem; font-weight: 700; margin-bottom: 20px;
+    }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: .98; letter-spacing: -3px; max-width: 900px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { max-width: 760px; color: var(--muted); font-size: 1.15rem; margin: 28px 0; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border);
+      background: var(--surface); font-weight: 700;
+    }
+    .btn.primary { background: var(--accent); color: #081022; border-color: var(--accent); }
+    .btn:hover { transform: translateY(-1px); }
+    section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .section-title { font-size: 2rem; margin-bottom: 12px; letter-spacing: -1px; }
+    .section-intro { color: var(--muted); max-width: 760px; margin-bottom: 34px; }
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 50px; }
+    .stat, .card {
+      background: linear-gradient(145deg, rgba(23,33,58,.9), rgba(17,24,43,.9));
+      border: 1px solid var(--border); border-radius: 18px;
+    }
+    .stat { padding: 24px; }
+    .stat strong { display: block; font-size: 2rem; color: var(--accent); }
+    .stat span { color: var(--muted); font-size: .9rem; }
+    .experience { padding: 28px; }
+    .experience h3 { font-size: 1.25rem; }
+    .meta { color: var(--accent-2); font-weight: 700; margin: 4px 0 16px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+    .chip { padding: 7px 11px; border-radius: 999px; background: rgba(124,156,255,.09); border: 1px solid var(--border); color: #dbe3ff; font-size: .86rem; }
+    .projects { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .project { padding: 26px; display: flex; flex-direction: column; min-height: 245px; }
+    .project .number { color: var(--accent); font-weight: 800; font-size: .85rem; }
+    .project h3 { margin: 7px 0 8px; font-size: 1.35rem; }
+    .project p { color: var(--muted); font-size: .94rem; }
+    .project .stack { margin-top: auto; padding-top: 20px; color: var(--accent-2); font-size: .86rem; font-weight: 700; }
+    .project .visit { display: inline-block; margin-top: 12px; color: var(--accent); font-weight: 700; }
+    .skills { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .skill { padding: 22px; }
+    .skill h3 { margin-bottom: 10px; }
+    .skill p { color: var(--muted); font-size: .92rem; }
+    .contact { text-align: center; padding-bottom: 110px; }
+    .contact p { color: var(--muted); max-width: 650px; margin: 0 auto 24px; }
+    footer { border-top: 1px solid var(--border); color: var(--muted); padding: 25px 0; font-size: .85rem; }
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .stats, .skills { grid-template-columns: repeat(2,1fr); }
+      .projects { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .hero { padding: 80px 0 60px; }
+      h1 { letter-spacing: -1.8px; }
+      .stats, .skills { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#">TM<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="eyebrow">10+ YEARS · ECOMMERCE ENGINEERING</div>
+      <h1>Tarun Mahajan<br><span>Magento & Adobe Commerce Specialist</span></h1>
+      <p>
+        Senior eCommerce developer specializing in Magento 2, Adobe Commerce,
+        PWA, React, Headless Commerce, GraphQL, Hyvä, Cloud Commerce and
+        multi-vendor solutions.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="https://www.linkedin.com/in/tarun-mahajan-23a694b6/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Ecommerce-specialist" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong>10+</strong><span>Years Experience</span></div>
+        <div class="stat"><strong>6+</strong><span>Years at Bitines World</span></div>
+        <div class="stat"><strong>7</strong><span>Featured eCommerce Projects</span></div>
+        <div class="stat"><strong>360°</strong><span>Commerce Engineering</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-intro">
+        I build and support scalable eCommerce platforms, from Magento and Adobe Commerce
+        implementations to modern headless storefronts. My work spans architecture,
+        custom development, integrations, frontend applications, performance and
+        production problem-solving.
+      </p>
+      <div class="chips">
+        <span class="chip">Magento 2</span><span class="chip">Adobe Commerce</span>
+        <span class="chip">PWA</span><span class="chip">React</span>
+        <span class="chip">Headless</span><span class="chip">GraphQL</span>
+        <span class="chip">Hyvä</span><span class="chip">Cloud Commerce</span>
+        <span class="chip">Multi-Vendor</span><span class="chip">PHP</span>
+        <span class="chip">APIs</span><span class="chip">Performance</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      <p class="section-intro">Senior-level eCommerce engineering experience with a strong focus on Magento and modern commerce architecture.</p>
+      <div class="card experience">
+        <h3>Bitines World</h3>
+        <div class="meta">Senior Magento / Adobe Commerce Developer · 6+ Years</div>
+        <p>
+          Working across Magento Open Source and Adobe Commerce implementations,
+          including custom modules, third-party integrations, payment integrations,
+          PWA/headless solutions, React applications, GraphQL, multi-vendor commerce,
+          performance optimization, security and scalable commerce architecture.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured eCommerce Projects</h2>
+      <p class="section-intro">
+        Selected public websites I have worked on. Project descriptions are intentionally
+        high-level to respect client confidentiality.
+      </p>
+
+      <div class="projects">
+        <article class="card project">
+          <div class="number">01 · ADOBE COMMERCE</div>
+          <h3>Petmate Partners</h3>
+          <p>eCommerce platform built on Adobe Commerce, with work across commerce development, customization and integrations.</p>
+          <div class="stack">Adobe Commerce · Magento 2</div>
+          <a class="visit" href="https://www.petmatepartners.com/" target="_blank" rel="noopener">Visit website →</a>
+        </article>
+
+        <article class="card project">
+          <div class="number">02 · HEADLESS / PWA</div>
+          <h3>EZ Living Furniture</h3>
+          <p>Modern headless eCommerce implementation involving PWA and GraphQL, combining Magento with a modern frontend approach.</p>
+          <div class="stack">Magento Open Source · PWA · GraphQL</div>
+          <a class="visit" href="https://www.ezlivingfurniture.ie/" target="_blank" rel="noopener">Visit website →</a>
+        </article>
+
+        <article class="card project">
+          <div class="number">03 · HYVÄ</div>
+          <h3>Medicus Health</h3>
+          <p>Magento storefront using the Hyvä frontend, with focus on modern storefront development and eCommerce functionality.</p>
+          <div class="stack">Magento Open Source · Hyvä</div>
+          <a class="visit" href="https://www.medicus-health.com/" target="_blank" rel="noopener">Visit website →</a>
+        </article>
+
+        <article class="card project">
+          <div class="number">04 · OPEN SOURCE</div>
+          <h3>Physician Naturals</h3>
+          <p>Magento Open Source eCommerce platform for health and wellness products.</p>
+          <div class="stack">Magento Open Source · PHP · eCommerce</div>
+          <a class="visit" href="https://www.physiciannaturals.com/" target="_blank" rel="noopener">Visit website →</a>
+        </article>
+
+        <article class="card project">
+          <div class="number">05 · OPEN SOURCE</div>
+          <h3>Propel Parts</h3>
+          <p>Automotive parts eCommerce platform developed on Magento Open Source.</p>
+          <div class="stack">Magento Open Source · eCommerce</div>
+          <a class="visit" href="https://propelparts.us/" target="_blank" rel="noopener">Visit website →</a>
+        </article>
+
+        <article class="card project">
+          <div class="number">06 · OPEN SOURCE</div>
+          <h3>Zanduco</h3>
+          <p>eCommerce platform for commercial equipment and supplies, built on Magento Open Source.</p>
+          <div class="stack">Magento Open Source · B2B/B2C</div>
+          <a class="visit" href="https://www.zanduco.com/" target="_blank" rel="noopener">Visit website →</a>
+        </article>
+
+        <article class="card project">
+          <div class="number">07 · OPEN SOURCE</div>
+          <h3>Canadian Classroom</h3>
+          <p>eCommerce platform for educational products and classroom resources.</p>
+          <div class="stack">Magento Open Source · eCommerce</div>
+          <a class="visit" href="https://www.canadianclassroom.com/" target="_blank" rel="noopener">Visit website →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills">
+        <div class="card skill"><h3>Commerce Platforms</h3><p>Magento 2, Adobe Commerce, Magento Open Source, Hyvä, multi-vendor commerce.</p></div>
+        <div class="card skill"><h3>Frontend</h3><p>React, PWA, JavaScript and modern headless storefront development.</p></div>
+        <div class="card skill"><h3>APIs & Integration</h3><p>GraphQL, REST APIs, payment integrations and third-party commerce integrations.</p></div>
+        <div class="card skill"><h3>Backend</h3><p>PHP, MySQL, Magento custom modules, extensions and business logic.</p></div>
+        <div class="card skill"><h3>Architecture</h3><p>Scalable commerce architecture, cloud commerce and production troubleshooting.</p></div>
+        <div class="card skill"><h3>Optimization</h3><p>eCommerce performance, scalability, security and application optimization.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <p>
+        Interested in Magento, Adobe Commerce, PWA, headless commerce, React or
+        scalable eCommerce engineering? Let's connect.
+      </p>
+      <div class="buttons" style="justify-content:center;">
+        <a class="btn primary" href="mailto:tarun8054@gmail.com">Email Me</a>
+        <a class="btn" href="https://www.linkedin.com/in/tarun-mahajan-23a694b6/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Ecommerce-specialist" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2026 Tarun Mahajan · Magento & Adobe Commerce Specialist</div>
+  </footer>
+</body>
+</html>
