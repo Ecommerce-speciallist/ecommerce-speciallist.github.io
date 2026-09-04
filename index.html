@@ -112,6 +112,16 @@ html[data-theme="dark"] .toggle .knob{transform:translateX(32px)}
 .c-cloud{top:38%;left:2%;animation-delay:-3s}
 .c-gql{top:48%;right:0;animation-delay:-4.5s}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.codeCard{position:absolute;z-index:3;left:-5%;bottom:2%;width:min(255px,60%);border-radius:14px;overflow:hidden;
+  background:rgba(5,12,26,.93);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px);
+  box-shadow:0 26px 55px rgba(0,0,0,.6);transform:rotate(-4deg);
+  font:500 11px/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.codeCard .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;
+  border-bottom:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05)}
+.codeCard .bar i{width:9px;height:9px;border-radius:50%}
+.codeCard .bar span{margin-left:7px;font:600 10.5px Inter,sans-serif;color:#7f95b3;letter-spacing:.02em}
+.codeCard pre{margin:0;padding:13px 14px;color:#b9cce6;white-space:pre;overflow:hidden}
+.tk{color:#e535ab}.tf{color:#60a5fa}.ts{color:#34d399}.tv{color:#fbbf24}
 @media (prefers-reduced-motion:reduce){.chipIco{animation:none}}
 .nowCard{position:relative;z-index:4;margin-top:-18px;display:flex;align-items:center;gap:14px;
   border:1px solid rgba(255,255,255,.14);background:rgba(8,16,32,.72);backdrop-filter:blur(10px);
@@ -161,12 +171,15 @@ section{padding:64px 0}
 .filter:hover{color:var(--text);border-color:var(--brand-2)}
 .filter[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 8px 20px rgba(37,99,235,.25)}
 .railWrap{position:relative}
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(268px,1fr);gap:20px;overflow-x:auto;
+.rail{display:flex;flex-direction:row;flex-wrap:nowrap;gap:20px;
+  overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;
   scroll-snap-type:x mandatory;padding:6px 2px 18px;scrollbar-width:thin}
 .rail::-webkit-scrollbar{height:6px}
 .rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
-.proj{scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+.proj{flex:0 0 280px;min-width:0;scroll-snap-align:start;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--radius);
   overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.25s}
+.proj[hidden]{display:none}
 .proj:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--brand-2)}
 .proj img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--surface-2)}
 .pmedia{position:relative}
@@ -233,12 +246,15 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
   .timeline::before{display:none}
   .band > div + div{border-left:0;border-top:1px solid var(--line)}
   .navHideSm{display:none}
+  .proj{flex-basis:300px}
 }
 @media(max-width:560px){
   .statsRow{grid-template-columns:1fr 1fr}
   .statsRow div:nth-child(2){border-right:0}
   .statsRow div:nth-child(1),.statsRow div:nth-child(2){border-bottom:1px solid rgba(255,255,255,.1)}
   .arw{display:none}
+  .proj{flex-basis:84%}
+  .codeCard{left:-2%;bottom:0;width:min(200px,52%)}
   .hero{padding-top:40px}
 }
 </style>
@@ -317,8 +333,17 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
       <svg viewBox="0 0 40 24"><text x="20" y="17" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="800" fill="#a78bfa">PWA</text></svg></span>
     <span class="chipIco c-cloud" title="Cloud Commerce">
       <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 9.2 4.4 4.4 0 0 0 7 18Z"/></svg></span>
-    <span class="chipIco c-gql" title="GraphQL">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#e535ab" stroke-width="1.6"><path d="M12 3 4 17h16L12 3Z"/><circle cx="12" cy="3" r="2" fill="#e535ab"/><circle cx="4" cy="17" r="2" fill="#e535ab"/><circle cx="20" cy="17" r="2" fill="#e535ab"/></svg></span>
+    <div class="codeCard" aria-hidden="true">
+      <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>product.graphql</span></div>
+<pre><span class="tk">query</span> <span class="tf">product</span>(<span class="tv">$sku</span>: String!) {
+  <span class="tf">products</span>(filter: { sku: { eq: <span class="tv">$sku</span> } }) {
+    items {
+      <span class="ts">name</span>
+      <span class="ts">stock_status</span>
+    }
+  }
+}</pre>
+    </div>
    </div>
 
    <div class="nowCard">
@@ -337,31 +362,20 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
 <section id="about">
  <div class="wrap">
   <div class="aboutGrid">
-    <div class="photoFrame"><img src="assets/tarun-about.png" alt="Tarun Mahajan"></div>
+    <div class="photoFrame"><img src="assets/tarun-about.jpg" alt="Tarun Mahajan"></div>
 
     <div class="aboutText">
       <div class="head"><h2>About me</h2></div>
-      <p>
-        With 10+ years of experience in eCommerce engineering, I specialize in building
-        and scaling Magento and Adobe Commerce platforms for complex B2B and B2C
-        businesses. My experience spans Adobe Commerce Cloud, Magento Open Source,
-        multi-vendor commerce, headless PWA, React, GraphQL and modern eCommerce
-        architecture.
-      </p>
-      
-      <p>
-        From custom Magento development and backend architecture to ERP, payment,
-        shipping and third-party integrations, I focus on creating commerce systems
-        that are scalable, performant and maintainable. I have also worked extensively
-        with headless architectures, GraphQL APIs and React-based storefronts.
-      </p>
-      
-      <p>
-        Currently, I am an <strong>Associate Team Lead at Vtnetzwelt</strong>, where I
-        have spent 6+ years delivering and supporting Magento and Adobe Commerce
-        solutions while taking ownership of technical implementation, architecture,
-        integrations and complex eCommerce challenges.
-      </p>
+      <p>Since 2017 I have delivered more than 50 eCommerce projects, all circling one
+         problem: making large Magento stores fast, stable and actually maintainable. That has meant migrating a legacy core PHP store onto
+         Magento&nbsp;2 — a build later recognised at Adobe MM#24 in Ahmedabad — running separate
+         B2B and B2C checkout flows from a single Adobe Commerce install, and owning the
+         GraphQL layer behind a headless PWA storefront.</p>
+      <p>The integration work is what I enjoy most: ERP, payment gateways, Givex, and the
+         other systems a store has to agree with but doesn't control. More recently that has
+         extended to AI-driven search and personalization.</p>
+      <p>At Vtnetzwelt I work as Associate Team Lead across Adobe Commerce Cloud, Magento
+         Open Source, PWA storefronts and GraphQL backends.</p>
       <p style="margin-bottom:0"><a href="#projects" style="color:var(--brand);font-weight:600">See the work&nbsp;→</a>
          &nbsp;·&nbsp;
          <a href="mailto:tarun9563@gmail.com" style="color:var(--brand);font-weight:600">Get in touch</a></p>
@@ -595,20 +609,35 @@ burger.addEventListener('click', () => {
 });
 menu.addEventListener('click', e => { if (e.target.tagName === 'A') menu.classList.remove('open'); });
 
-/* project filters */
+/* projects: filters + carousel */
+const rail = document.getElementById('rail');
+const prev = document.getElementById('prev'), next = document.getElementById('next');
 const filters = document.querySelectorAll('.filter'), cards = document.querySelectorAll('.proj');
+
+function syncArrows(){
+  const max = rail.scrollWidth - rail.clientWidth - 2;
+  const off = max <= 0;
+  prev.disabled = off || rail.scrollLeft <= 2;
+  next.disabled = off || rail.scrollLeft >= max;
+}
+function step(){
+  const card = rail.querySelector('.proj:not([hidden])');
+  return card ? card.getBoundingClientRect().width + 20 : 300;
+}
+prev.addEventListener('click', () => rail.scrollBy({left: -step()*2, behavior: 'smooth'}));
+next.addEventListener('click', () => rail.scrollBy({left:  step()*2, behavior: 'smooth'}));
+rail.addEventListener('scroll', syncArrows, {passive: true});
+addEventListener('resize', syncArrows);
+
 filters.forEach(b => b.addEventListener('click', () => {
   filters.forEach(x => x.setAttribute('aria-pressed', 'false'));
   b.setAttribute('aria-pressed', 'true');
   const f = b.dataset.f;
-  cards.forEach(c => c.hidden = !(f === 'all' || c.dataset.cat === f));
+  cards.forEach(c => { c.hidden = !(f === 'all' || c.dataset.cat === f); });
+  rail.scrollTo({left: 0, behavior: 'smooth'});
+  syncArrows();
 }));
-
-/* carousel */
-const rail = document.getElementById('rail');
-const step = () => rail.querySelector('.proj:not([hidden])').getBoundingClientRect().width + 20;
-document.getElementById('prev').addEventListener('click', () => rail.scrollBy({left: -step()*2, behavior: 'smooth'}));
-document.getElementById('next').addEventListener('click', () => rail.scrollBy({left: step()*2, behavior: 'smooth'}));
+syncArrows();
 
 /* skill bars fill when visible */
 const bars = document.querySelectorAll('.fill');
