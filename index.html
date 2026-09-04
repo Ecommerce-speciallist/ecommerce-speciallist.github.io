@@ -182,7 +182,27 @@ section{padding:64px 0}
 .proj[hidden]{display:none}
 .proj:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--brand-2)}
 .proj img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--surface-2)}
-.pmedia{position:relative}
+.pmedia{position:relative;container-type:inline-size}
+.cover{aspect-ratio:16/10;position:relative;overflow:hidden;color:#eef8ff;
+  padding:5cqw 5cqw 21cqw;display:flex;gap:3cqw;
+  background:
+    radial-gradient(38cqw 38cqw at 92% 8%,color-mix(in srgb,var(--c1) 26%,transparent),transparent 70%),
+    radial-gradient(42cqw 42cqw at 4% 98%,color-mix(in srgb,var(--c2) 24%,transparent),transparent 70%),
+    linear-gradient(145deg,#07111f,#0b2440 55%,#17153d)}
+.cover .cnum{position:absolute;top:5cqw;right:5cqw;font:700 3.6cqw/1 Inter,sans-serif;
+  color:#8edaff;background:#102d49;border:1px solid #285276;border-radius:99px;padding:1.6cqw 3.4cqw}
+.cover .ctext{flex:1;min-width:0;align-self:center}
+.cover .ctext b{display:block;font-family:"Plus Jakarta Sans",Inter,sans-serif;font-weight:800;
+  font-size:7cqw;line-height:1.15;letter-spacing:-.02em}
+.cover .ctext em{display:block;font-style:normal;font-weight:700;font-size:3.5cqw;
+  letter-spacing:.12em;color:var(--c1);margin:2.4cqw 0 1.4cqw}
+.cover .ctext span{display:block;font-size:3.4cqw;line-height:1.45;color:#9ebbd4}
+.cover .cui{width:30cqw;flex:none;align-self:center;border-radius:4cqw;padding:3cqw;
+  background:#0a1728;border:1px solid #234765;display:grid;gap:2cqw}
+.cover .cui i{display:block;border-radius:99px;background:#31567480;height:2.4cqw}
+.cover .cui i:first-child{height:9cqw;border-radius:3cqw;
+  background:linear-gradient(135deg,var(--c1),var(--c2));opacity:.8}
+.cover .cui i:nth-child(3){width:70%}
 .plogo{position:absolute;left:14px;bottom:14px;height:42px;min-width:42px;padding:0 10px;border-radius:11px;
   background:#fff;border:1px solid rgba(16,28,49,.10);box-shadow:0 6px 18px rgba(0,0,0,.22);
   display:grid;place-items:center;font:800 14px/1 "Plus Jakarta Sans",Inter,sans-serif;color:#101c31;letter-spacing:.04em}
@@ -458,15 +478,14 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
 <section id="projects">
  <div class="wrap">
   <div class="head"><h2>Featured projects</h2>
-    <p>Seven picked from 50+ delivered — the ones that best show the range. The cover images are original portfolio artwork, not client screenshots.</p>
+    <p>Seven live Magento Open Source stores picked from 50+ delivered. The covers are original portfolio artwork, not client screenshots.</p>
   </div>
 
   <div class="filters" role="group" aria-label="Filter projects">
     <button class="filter" data-f="all" aria-pressed="true">All projects</button>
-    <button class="filter" data-f="adobe" aria-pressed="false">Adobe Commerce</button>
-    <button class="filter" data-f="pwa" aria-pressed="false">PWA / Headless</button>
-    <button class="filter" data-f="m2" aria-pressed="false">Magento 2</button>
-    <button class="filter" data-f="hyva" aria-pressed="false">Hyvä theme</button>
+    <button class="filter" data-f="edu" aria-pressed="false">Education</button>
+    <button class="filter" data-f="retail" aria-pressed="false">Specialist retail</button>
+    <button class="filter" data-f="b2b" aria-pressed="false">B2B / Wholesale</button>
   </div>
 
   <div class="railWrap">
@@ -474,47 +493,96 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
    <button class="arw r" id="next" aria-label="Next projects"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m10 6 6 6-6 6"/></svg></button>
 
    <div class="rail" id="rail">
-    <article class="proj" data-cat="adobe">
-      <div class="pmedia"><img src="assets/petmate.svg" alt="Pet Products Store portfolio artwork" loading="lazy"><span class="plogo" data-mono="PP"><img src="assets/logos/petmate.png" alt="Pet Products Store logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
-      <div class="pb"><h3>Pet Products Store, USA</h3><span class="badge">Adobe Commerce Cloud</span>
-        <p>B2B and B2C storefronts on Adobe Commerce with a platform upgrade, third-party integrations, split checkout configuration and ERP order/stock sync.</p>
-        <a href="https://www.petmatepartners.com/" target="_blank" rel="noopener">View project →</a></div>
-    </article>
-    <article class="proj" data-cat="pwa">
-      <div class="pmedia"><img src="assets/ezliving.svg" alt="EZ Living Furniture portfolio artwork" loading="lazy"><span class="plogo" data-mono="EZ"><img src="assets/logos/ezliving.png" alt="EZ Living Furniture logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
-      <div class="pb"><h3>EZ Furniture Store, Ireland</h3><span class="badge v">PWA · Headless · GraphQL</span>
-        <p>Headless PWA storefront backed by a Magento GraphQL API, with ERP, payment gateway and Givex integrations built for scale.</p>
-        <a href="https://www.ezlivingfurniture.ie/" target="_blank" rel="noopener">View project →</a></div>
-    </article>
-    <article class="proj" data-cat="m2">
-      <div class="pmedia"><img src="assets/zanduco.svg" alt="Restaurant equipment store portfolio artwork" loading="lazy"><span class="plogo" data-mono="ZD"><img src="assets/logos/zanduco.png" alt="Zanduco logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
-      <div class="pb"><h3>Restaurant Equipment, USA</h3><span class="badge g">Magento 2 · Award-winning</span>
-        <p>Migrated a legacy core PHP store to Magento 2 with new APIs, custom shipping, payment gateways and a rebuilt theme. Recognised at Adobe MM#24, Ahmedabad.</p>
-        <a href="https://www.zanduco.com/" target="_blank" rel="noopener">View project →</a></div>
-    </article>
-    <article class="proj" data-cat="m2">
-      <div class="pmedia"><img src="assets/physician.svg" alt="Physician Naturals portfolio artwork" loading="lazy"><span class="plogo" data-mono="PN"><img src="assets/logos/physician.png" alt="Physician Naturals logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
-      <div class="pb"><h3>Physician Naturals</h3><span class="badge">Magento Open Source</span>
-        <p>Health and wellness store on Magento Open Source with custom catalog functionality and storefront enhancements.</p>
-        <a href="https://www.physiciannaturals.com/" target="_blank" rel="noopener">View project →</a></div>
-    </article>
-    <article class="proj" data-cat="hyva">
-      <div class="pmedia"><img src="assets/medicus.svg" alt="Medicus Health portfolio artwork" loading="lazy"><span class="plogo" data-mono="MH"><img src="assets/logos/medicus.png" alt="Medicus Health logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
-      <div class="pb"><h3>Medicus Health</h3><span class="badge v">Hyvä theme</span>
-        <p>Medical supplies storefront rebuilt on the Hyvä frontend for a lighter, faster Magento Open Source experience.</p>
-        <a href="https://www.medicus-health.com/" target="_blank" rel="noopener">View project →</a></div>
-    </article>
-    <article class="proj" data-cat="m2">
-      <div class="pmedia"><img src="assets/propel.svg" alt="Propel Parts portfolio artwork" loading="lazy"><span class="plogo" data-mono="PR"><img src="assets/logos/propel.png" alt="Propel Parts logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
-      <div class="pb"><h3>Propel Parts</h3><span class="badge">Magento Open Source</span>
-        <p>Automotive parts store with a large SKU catalog, fitment-driven browsing and custom checkout work.</p>
-        <a href="https://propelparts.us/" target="_blank" rel="noopener">View project →</a></div>
-    </article>
-    <article class="proj" data-cat="m2">
-      <div class="pmedia"><img src="assets/canadian.svg" alt="Canadian Classroom portfolio artwork" loading="lazy"><span class="plogo" data-mono="CC"><img src="assets/logos/canadian.png" alt="Canadian Classroom logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
+    <article class="proj" data-cat="edu">
+      <div class="pmedia">
+        <div class="cover" style="--c1:#38bdf8;--c2:#818cf8" role="img" aria-label="Canadian Classroom portfolio artwork">
+          <span class="cnum">01</span>
+          <span class="ctext"><b>Canadian Classroom</b><em>EDUCATION</em><span>Magento Open Source · school supplies</span></span>
+          <span class="cui"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <span class="plogo" data-mono="CC"><img src="assets/logos/canadian.png" alt="Canadian Classroom logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span>
+      </div>
       <div class="pb"><h3>Canadian Classroom</h3><span class="badge">Magento Open Source</span>
-        <p>Educational products store with catalog management, shipping rules and ongoing platform support.</p>
+        <p>Educational products store for Canadian schools, with catalog management, shipping rules and ongoing platform support.</p>
         <a href="https://www.canadianclassroom.com/" target="_blank" rel="noopener">View project →</a></div>
+    </article>
+    <article class="proj" data-cat="edu">
+      <div class="pmedia">
+        <div class="cover" style="--c1:#22d3ee;--c2:#3b82f6" role="img" aria-label="Merconnet portfolio artwork">
+          <span class="cnum">02</span>
+          <span class="ctext"><b>Merconnet</b><em>EDUCATION</em><span>Multi-store · CAD/USD/EUR/GBP · EN/FR</span></span>
+          <span class="cui"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <span class="plogo" data-mono="ME"><img src="assets/logos/merconnet.png" alt="Merconnet logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span>
+      </div>
+      <div class="pb"><h3>Merconnet</h3><span class="badge">Multi-store · Multi-currency</span>
+        <p>Canadian classroom-technology platform running multiple store views in English and French, priced in CAD, USD, EUR and GBP, with school purchase orders and a request-a-quote flow.</p>
+        <a href="https://www.merconnet.com/" target="_blank" rel="noopener">View project →</a></div>
+    </article>
+    <article class="proj" data-cat="edu">
+      <div class="pmedia">
+        <div class="cover" style="--c1:#34d399;--c2:#22d3ee" role="img" aria-label="Inventive Classroom portfolio artwork">
+          <span class="cnum">03</span>
+          <span class="ctext"><b>Inventive Classroom</b><em>EDUCATION</em><span>STEM &amp; STEAM classroom technology</span></span>
+          <span class="cui"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <span class="plogo" data-mono="IC"><img src="assets/logos/inventive.png" alt="Inventive Classroom logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span>
+      </div>
+      <div class="pb"><h3>Inventive Classroom</h3><span class="badge">Magento Open Source</span>
+        <p>STEM and STEAM storefront covering coding robots, 3D printers, document cameras and classroom furniture across a deep brand and age-based catalog.</p>
+        <a href="https://www.inventiveclassroom.com/" target="_blank" rel="noopener">View project →</a></div>
+    </article>
+    <article class="proj" data-cat="retail">
+      <div class="pmedia">
+        <div class="cover" style="--c1:#f472b6;--c2:#818cf8" role="img" aria-label="GetFPV portfolio artwork">
+          <span class="cnum">04</span>
+          <span class="ctext"><b>GetFPV</b><em>RETAIL</em><span>FPV drones &amp; parts · large catalog</span></span>
+          <span class="cui"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <span class="plogo" data-mono="GF"><img src="assets/logos/getfpv.png" alt="GetFPV logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span>
+      </div>
+      <div class="pb"><h3>GetFPV</h3><span class="badge v">High-volume catalog</span>
+        <p>US retailer for FPV drones, parts and accessories, running a very large SKU catalog with deep category filtering.</p>
+        <a href="https://www.getfpv.com/" target="_blank" rel="noopener">View project →</a></div>
+    </article>
+    <article class="proj" data-cat="retail">
+      <div class="pmedia">
+        <div class="cover" style="--c1:#fbbf24;--c2:#f97316" role="img" aria-label="The Final Image portfolio artwork">
+          <span class="cnum">05</span>
+          <span class="ctext"><b>The Final Image</b><em>RETAIL</em><span>Ammunition &amp; tactical gear · USA</span></span>
+          <span class="cui"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <span class="plogo" data-mono="TF"><img src="assets/logos/finalimage.png" alt="The Final Image logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span>
+      </div>
+      <div class="pb"><h3>The Final Image</h3><span class="badge v">Restricted-goods retail</span>
+        <p>US ammunition, firearms and tactical gear store, including a members-only pricing tier and brand-led catalog navigation.</p>
+        <a href="https://www.thefinalimage.com/" target="_blank" rel="noopener">View project →</a></div>
+    </article>
+    <article class="proj" data-cat="retail">
+      <div class="pmedia">
+        <div class="cover" style="--c1:#a3e635;--c2:#22d3ee" role="img" aria-label="Physician Naturals portfolio artwork">
+          <span class="cnum">06</span>
+          <span class="ctext"><b>Physician Naturals</b><em>RETAIL</em><span>Health &amp; wellness supplements</span></span>
+          <span class="cui"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <span class="plogo" data-mono="PN"><img src="assets/logos/physician.png" alt="Physician Naturals logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span>
+      </div>
+      <div class="pb"><h3>Physician Naturals</h3><span class="badge v">Magento Open Source</span>
+        <p>Health and wellness supplements store with custom catalog functionality and storefront enhancements.</p>
+        <a href="http://physiciannaturals.com/" target="_blank" rel="noopener">View project →</a></div>
+    </article>
+    <article class="proj" data-cat="b2b">
+      <div class="pmedia">
+        <div class="cover" style="--c1:#818cf8;--c2:#f472b6" role="img" aria-label="Top Down Trading portfolio artwork">
+          <span class="cnum">07</span>
+          <span class="ctext"><b>Top Down Trading</b><em>WHOLESALE</em><span>B2B liquidation &amp; wholesale · UK</span></span>
+          <span class="cui"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <span class="plogo" data-mono="TD"><img src="assets/logos/topdown.png" alt="Top Down Trading logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span>
+      </div>
+      <div class="pb"><h3>Top Down Trading</h3><span class="badge g">B2B · Wholesale · UK</span>
+        <p>UK wholesale and liquidation supplier selling by parcel, pallet and container, with VAT handling at checkout and an export flow for overseas buyers.</p>
+        <a href="https://topdowntrading.co.uk/" target="_blank" rel="noopener">View project →</a></div>
     </article>
    </div>
   </div>
