@@ -93,7 +93,7 @@ html[data-theme="dark"] .toggle .knob{transform:translateX(32px)}
 .statsRow span{font-size:12.5px;color:#93a9c6}
 .s1{color:#60a5fa}.s2{color:#a78bfa}.s3{color:#38bdf8}.s4{color:#34d399}
 
-.heroArt{position:relative;display:grid;place-items:center;min-height:430px}
+.heroArt{position:relative;display:grid;place-items:center;min-height:430px;container-type:inline-size}
 .glow{position:absolute;width:min(440px,86%);aspect-ratio:1;border-radius:50%;
   background:radial-gradient(circle,rgba(37,99,235,.55),rgba(37,99,235,.06) 62%,transparent 70%);top:6%}
 .ring{position:absolute;border:1px solid rgba(147,197,253,.22);border-radius:50%}
@@ -110,18 +110,25 @@ html[data-theme="dark"] .toggle .knob{transform:translateX(32px)}
 .c-mag{top:8%;left:14%}
 .c-pwa{top:12%;right:4%;animation-delay:-1.5s}
 .c-cloud{top:38%;left:2%;animation-delay:-3s}
+.c-gql{top:47%;right:0;animation-delay:-4.5s}
+.c-adobe{top:70%;right:9%;animation-delay:-2.2s}
+.c-adobe::after{content:"";position:absolute;right:-2px;bottom:-2px;width:20px;height:20px;border-radius:50%;
+  background:#16a34a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 13 4 4 10-10'/%3E%3C/svg%3E") center/12px no-repeat;
+  border:2px solid #081020}
 .c-gql{top:48%;right:0;animation-delay:-4.5s}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.codeCard{position:absolute;z-index:3;left:-5%;bottom:2%;width:min(255px,60%);border-radius:14px;overflow:hidden;
-  background:rgba(5,12,26,.93);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px);
-  box-shadow:0 26px 55px rgba(0,0,0,.6);transform:rotate(-4deg);
-  font:500 11px/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.codeCard .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;
-  border-bottom:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05)}
-.codeCard .bar i{width:9px;height:9px;border-radius:50%}
-.codeCard .bar span{margin-left:7px;font:600 10.5px Inter,sans-serif;color:#7f95b3;letter-spacing:.02em}
-.codeCard pre{margin:0;padding:13px 14px;color:#b9cce6;white-space:pre;overflow:hidden}
-.tk{color:#e535ab}.tf{color:#60a5fa}.ts{color:#34d399}.tv{color:#fbbf24}
+.codeBg{position:absolute;z-index:1;top:2%;left:50%;transform:translateX(-50%);
+  width:104%;height:86%;border-radius:22px;overflow:hidden;
+  background:rgba(5,12,26,.5);border:1px solid rgba(255,255,255,.09);
+  font:500 clamp(9px,2.4cqw,13px)/2.05 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  -webkit-mask-image:radial-gradient(125% 92% at 50% 44%,#000 34%,transparent 80%);
+  mask-image:radial-gradient(125% 92% at 50% 44%,#000 34%,transparent 80%)}
+.codeBg .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;
+  border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+.codeBg .bar i{width:9px;height:9px;border-radius:50%}
+.codeBg .bar span{margin-left:7px;font:600 11px Inter,sans-serif;color:#6f86a6;letter-spacing:.02em}
+.codeBg pre{margin:0;padding:16px 20px;color:#7e97b8;white-space:pre;overflow:hidden;opacity:.85}
+.tk{color:#c74a94}.tf{color:#4a86c9}.ts{color:#3f9e78}.tv{color:#c99a3c}
 @media (prefers-reduced-motion:reduce){.chipIco{animation:none}}
 .nowCard{position:relative;z-index:4;margin-top:-18px;display:flex;align-items:center;gap:14px;
   border:1px solid rgba(255,255,255,.14);background:rgba(8,16,32,.72);backdrop-filter:blur(10px);
@@ -274,7 +281,6 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
   .statsRow div:nth-child(1),.statsRow div:nth-child(2){border-bottom:1px solid rgba(255,255,255,.1)}
   .arw{display:none}
   .proj{flex-basis:84%}
-  .codeCard{left:-2%;bottom:0;width:min(200px,52%)}
   .hero{padding-top:40px}
 }
 .pill .mark{width:21px;height:21px;border-radius:6px;background:#fff;flex:none;display:grid;place-items:center}
@@ -352,7 +358,7 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
 
   <div>
    <div class="heroArt">
-    <span class="glow"></span><span class="ring r1"></span><span class="ring r2"></span>
+    <span class="glow"></span>
     <img class="portrait" src="assets/tarun-cutout.png" alt="Portrait of Tarun Mahajan" fetchpriority="high">
 
     <span class="chipIco c-mag" title="Magento 2">
@@ -361,14 +367,27 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
       <svg viewBox="0 0 40 24"><text x="20" y="17" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="800" fill="#a78bfa">PWA</text></svg></span>
     <span class="chipIco c-cloud" title="Cloud Commerce">
       <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 9.2 4.4 4.4 0 0 0 7 18Z"/></svg></span>
-    <div class="codeCard" aria-hidden="true">
+    <span class="chipIco c-gql" title="GraphQL">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#e535ab" stroke-width="1.6"><path d="M12 3 4 17h16L12 3Z"/><circle cx="12" cy="3" r="2" fill="#e535ab"/><circle cx="4" cy="17" r="2" fill="#e535ab"/><circle cx="20" cy="17" r="2" fill="#e535ab"/></svg></span>
+    <span class="chipIco c-adobe" title="Adobe Certified Professional — Adobe Commerce Developer">
+      <svg viewBox="0 0 24 24" fill="#EB1000"><path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624z"/></svg></span>
+
+    <div class="codeBg" aria-hidden="true">
       <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>product.graphql</span></div>
 <pre><span class="tk">query</span> <span class="tf">product</span>(<span class="tv">$sku</span>: String!) {
   <span class="tf">products</span>(filter: { sku: { eq: <span class="tv">$sku</span> } }) {
     items {
       <span class="ts">name</span>
+      <span class="ts">sku</span>
       <span class="ts">stock_status</span>
+      price_range {
+        minimum_price {
+          final_price { <span class="ts">value</span> <span class="ts">currency</span> }
+        }
+      }
+      categories { <span class="ts">name</span> <span class="ts">url_path</span> }
     }
+    <span class="ts">total_count</span>
   }
 }</pre>
     </div>
