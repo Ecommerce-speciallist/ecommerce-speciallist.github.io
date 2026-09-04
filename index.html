@@ -169,6 +169,11 @@ section{padding:64px 0}
   overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.25s}
 .proj:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--brand-2)}
 .proj img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--surface-2)}
+.pmedia{position:relative}
+.plogo{position:absolute;left:14px;bottom:14px;height:42px;min-width:42px;padding:0 10px;border-radius:11px;
+  background:#fff;border:1px solid rgba(16,28,49,.10);box-shadow:0 6px 18px rgba(0,0,0,.22);
+  display:grid;place-items:center;font:800 14px/1 "Plus Jakarta Sans",Inter,sans-serif;color:#101c31;letter-spacing:.04em}
+.plogo img{height:26px;width:auto;max-width:104px;object-fit:contain;aspect-ratio:auto;background:none;display:block}
 .pb{padding:18px;display:flex;flex-direction:column;gap:9px;flex:1}
 .pb h3{font-size:17px}
 .badge{align-self:flex-start;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;
@@ -421,43 +426,43 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
 
    <div class="rail" id="rail">
     <article class="proj" data-cat="adobe">
-      <img src="assets/petmate.svg" alt="Pet Products Store portfolio artwork" loading="lazy">
+      <div class="pmedia"><img src="assets/petmate.svg" alt="Pet Products Store portfolio artwork" loading="lazy"><span class="plogo" data-mono="PP"><img src="assets/logos/petmate.png" alt="Pet Products Store logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
       <div class="pb"><h3>Pet Products Store, USA</h3><span class="badge">Adobe Commerce Cloud</span>
         <p>B2B and B2C storefronts on Adobe Commerce with a platform upgrade, third-party integrations, split checkout configuration and ERP order/stock sync.</p>
         <a href="https://www.petmatepartners.com/" target="_blank" rel="noopener">View project →</a></div>
     </article>
     <article class="proj" data-cat="pwa">
-      <img src="assets/ezliving.svg" alt="EZ Living Furniture portfolio artwork" loading="lazy">
+      <div class="pmedia"><img src="assets/ezliving.svg" alt="EZ Living Furniture portfolio artwork" loading="lazy"><span class="plogo" data-mono="EZ"><img src="assets/logos/ezliving.png" alt="EZ Living Furniture logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
       <div class="pb"><h3>EZ Furniture Store, Ireland</h3><span class="badge v">PWA · Headless · GraphQL</span>
         <p>Headless PWA storefront backed by a Magento GraphQL API, with ERP, payment gateway and Givex integrations built for scale.</p>
         <a href="https://www.ezlivingfurniture.ie/" target="_blank" rel="noopener">View project →</a></div>
     </article>
     <article class="proj" data-cat="m2">
-      <img src="assets/zanduco.svg" alt="Restaurant equipment store portfolio artwork" loading="lazy">
+      <div class="pmedia"><img src="assets/zanduco.svg" alt="Restaurant equipment store portfolio artwork" loading="lazy"><span class="plogo" data-mono="ZD"><img src="assets/logos/zanduco.png" alt="Zanduco logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
       <div class="pb"><h3>Restaurant Equipment, USA</h3><span class="badge g">Magento 2 · Award-winning</span>
         <p>Migrated a legacy core PHP store to Magento 2 with new APIs, custom shipping, payment gateways and a rebuilt theme. Recognised at Adobe MM#24, Ahmedabad.</p>
         <a href="https://www.zanduco.com/" target="_blank" rel="noopener">View project →</a></div>
     </article>
     <article class="proj" data-cat="m2">
-      <img src="assets/physician.svg" alt="Physician Naturals portfolio artwork" loading="lazy">
+      <div class="pmedia"><img src="assets/physician.svg" alt="Physician Naturals portfolio artwork" loading="lazy"><span class="plogo" data-mono="PN"><img src="assets/logos/physician.png" alt="Physician Naturals logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
       <div class="pb"><h3>Physician Naturals</h3><span class="badge">Magento Open Source</span>
         <p>Health and wellness store on Magento Open Source with custom catalog functionality and storefront enhancements.</p>
         <a href="https://www.physiciannaturals.com/" target="_blank" rel="noopener">View project →</a></div>
     </article>
     <article class="proj" data-cat="hyva">
-      <img src="assets/medicus.svg" alt="Medicus Health portfolio artwork" loading="lazy">
+      <div class="pmedia"><img src="assets/medicus.svg" alt="Medicus Health portfolio artwork" loading="lazy"><span class="plogo" data-mono="MH"><img src="assets/logos/medicus.png" alt="Medicus Health logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
       <div class="pb"><h3>Medicus Health</h3><span class="badge v">Hyvä theme</span>
         <p>Medical supplies storefront rebuilt on the Hyvä frontend for a lighter, faster Magento Open Source experience.</p>
         <a href="https://www.medicus-health.com/" target="_blank" rel="noopener">View project →</a></div>
     </article>
     <article class="proj" data-cat="m2">
-      <img src="assets/propel.svg" alt="Propel Parts portfolio artwork" loading="lazy">
+      <div class="pmedia"><img src="assets/propel.svg" alt="Propel Parts portfolio artwork" loading="lazy"><span class="plogo" data-mono="PR"><img src="assets/logos/propel.png" alt="Propel Parts logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
       <div class="pb"><h3>Propel Parts</h3><span class="badge">Magento Open Source</span>
         <p>Automotive parts store with a large SKU catalog, fitment-driven browsing and custom checkout work.</p>
         <a href="https://propelparts.us/" target="_blank" rel="noopener">View project →</a></div>
     </article>
     <article class="proj" data-cat="m2">
-      <img src="assets/canadian.svg" alt="Canadian Classroom portfolio artwork" loading="lazy">
+      <div class="pmedia"><img src="assets/canadian.svg" alt="Canadian Classroom portfolio artwork" loading="lazy"><span class="plogo" data-mono="CC"><img src="assets/logos/canadian.png" alt="Canadian Classroom logo" onerror="this.parentNode.textContent=this.parentNode.dataset.mono"></span></div>
       <div class="pb"><h3>Canadian Classroom</h3><span class="badge">Magento Open Source</span>
         <p>Educational products store with catalog management, shipping rules and ongoing platform support.</p>
         <a href="https://www.canadianclassroom.com/" target="_blank" rel="noopener">View project →</a></div>
