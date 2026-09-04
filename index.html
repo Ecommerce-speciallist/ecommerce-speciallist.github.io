@@ -129,17 +129,17 @@ section{padding:64px 0}
 .head p{color:var(--muted);margin:14px 0 0;max-width:62ch}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
 
-.aboutGrid{display:grid;grid-template-columns:280px 1fr 1.15fr;gap:36px;align-items:start}
+.aboutGrid{display:grid;grid-template-columns:260px 1.15fr 1fr;gap:36px;align-items:start}
 .photoFrame{position:relative;border-radius:18px;padding:10px;
   background:linear-gradient(150deg,var(--brand),var(--violet));box-shadow:var(--shadow-lg)}
 .photoFrame img{display:block;border-radius:12px;width:100%;aspect-ratio:1;object-fit:cover;object-position:50% 22%}
 .aboutText p{color:var(--muted);margin:0 0 14px}
 .sign{font-family:Caveat,cursive;font-size:30px;color:var(--text);opacity:.85;margin-top:6px}
-.expGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.expGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .expItem{display:flex;align-items:center;gap:10px;padding:13px 14px;border:1px solid var(--line);
   border-radius:12px;background:var(--surface);font-weight:600;font-size:13.5px;transition:.2s}
 .expItem:hover{border-color:var(--brand-2);transform:translateY(-3px);box-shadow:var(--shadow)}
-.expItem span.dot{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff}
+.expItem span.dot{width:26px;height:26px;border-radius:8px;flex:none;display:grid;place-items:center;font-size:12px;color:#fff}
 
 /* experience timeline */
 .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative}
@@ -341,28 +341,33 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
 
     <div class="aboutText">
       <div class="head"><h2>About me</h2></div>
-      <p>I am a Magento developer with a track record of delivering scalable, secure and
-         user-friendly eCommerce solutions. My work covers custom module development,
-         ERP and payment gateway integrations, third-party services and headless
-         architectures for modern commerce.</p>
-      <p>Right now I lead eCommerce delivery at Vtnetzwelt, working across Adobe Commerce
-         Cloud, Magento Open Source, PWA storefronts and GraphQL backends.</p>
+      <p>Since 2017 I have worked on one problem: making large Magento stores fast, stable
+         and actually maintainable. That has meant migrating a legacy core PHP store onto
+         Magento&nbsp;2 — a build later recognised at Adobe MM#24 in Ahmedabad — running separate
+         B2B and B2C checkout flows from a single Adobe Commerce install, and owning the
+         GraphQL layer behind a headless PWA storefront.</p>
+      <p>The integration work is what I enjoy most: ERP, payment gateways, Givex, and the
+         other systems a store has to agree with but doesn't control. More recently that has
+         extended to AI-driven search and personalization.</p>
+      <p>At Vtnetzwelt I work as Associate Team Lead across Adobe Commerce Cloud, Magento
+         Open Source, PWA storefronts and GraphQL backends.</p>
+      <p style="margin-bottom:0"><a href="#projects" style="color:var(--brand);font-weight:600">See the work&nbsp;→</a>
+         &nbsp;·&nbsp;
+         <a href="mailto:tarun9563@gmail.com" style="color:var(--brand);font-weight:600">Get in touch</a></p>
       <div class="sign">Tarun Mahajan</div>
     </div>
 
     <div>
-      <div class="head"><h2>Core expertise</h2></div>
+      <div class="head"><h2>What I work on</h2></div>
       <div class="expGrid">
-        <div class="expItem"><span class="dot" style="background:#f26322">M2</span>Magento 2</div>
-        <div class="expItem"><span class="dot" style="background:#7c5cff">PW</span>PWA</div>
-        <div class="expItem"><span class="dot" style="background:#0ea5e9">HL</span>Headless</div>
-        <div class="expItem"><span class="dot" style="background:#e535ab">GQ</span>GraphQL</div>
-        <div class="expItem"><span class="dot" style="background:#38bdf8">CC</span>Cloud Commerce</div>
-        <div class="expItem"><span class="dot" style="background:#00758f">DB</span>MySQL</div>
-        <div class="expItem"><span class="dot" style="background:#8892bf">PHP</span>PHP</div>
-        <div class="expItem"><span class="dot" style="background:#eab308;color:#0b1526">JS</span>JavaScript</div>
-        <div class="expItem"><span class="dot" style="background:#7c3aed">CI</span>CI/CD</div>
-        <div class="expItem"><span class="dot" style="background:#111827">GH</span>GitHub</div>
+        <div class="expItem"><span class="dot" style="background:#f26322">✦</span>Adobe Commerce Cloud</div>
+        <div class="expItem"><span class="dot" style="background:#7c5cff">✦</span>Headless &amp; PWA storefronts</div>
+        <div class="expItem"><span class="dot" style="background:#0ea5e9">✦</span>ERP &amp; third-party integrations</div>
+        <div class="expItem"><span class="dot" style="background:#059669">✦</span>Payment gateways &amp; checkout</div>
+        <div class="expItem"><span class="dot" style="background:#e535ab">✦</span>B2B and B2C commerce</div>
+        <div class="expItem"><span class="dot" style="background:#2563eb">✦</span>Migrations &amp; platform upgrades</div>
+        <div class="expItem"><span class="dot" style="background:#eab308;color:#0b1526">✦</span>Performance &amp; security</div>
+        <div class="expItem"><span class="dot" style="background:#111827">✦</span>AI-driven search &amp; personalization</div>
       </div>
     </div>
   </div>
