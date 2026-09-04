@@ -106,17 +106,33 @@ html[data-theme="dark"] .toggle .knob{transform:translateX(32px)}
 .chipIco{position:absolute;z-index:3;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
   background:rgba(9,17,34,.82);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);
   box-shadow:0 12px 30px rgba(0,0,0,.45);animation:float 6s ease-in-out infinite}
-.chipIco img,.chipIco svg{width:28px;height:28px}
+.chipIco img,.chipIco svg{width:28px;height:28px;transition:scale .25s ease}
+.chipIco{cursor:help;transition:scale .25s cubic-bezier(.2,.9,.3,1.3),border-color .25s,box-shadow .25s}
+.chipIco:hover,.chipIco:focus-visible{scale:1.22;z-index:8;border-color:rgba(147,197,253,.55);
+  box-shadow:0 16px 38px rgba(0,0,0,.55),0 0 0 6px rgba(59,130,246,.13)}
+.chipIco:hover svg{scale:1.08}
+.chipIco::after{content:attr(data-tip);position:absolute;top:calc(100% + 14px);left:50%;
+  width:max-content;max-width:190px;padding:9px 12px;border-radius:11px;
+  background:rgba(6,14,30,.97);border:1px solid rgba(255,255,255,.16);
+  color:#cbdcf2;font:500 12px/1.45 Inter,sans-serif;letter-spacing:.01em;text-align:center;
+  box-shadow:0 16px 36px rgba(0,0,0,.55);opacity:0;pointer-events:none;
+  translate:-50% 8px;transition:opacity .22s ease,translate .22s ease;z-index:9}
+.chipIco:hover::after,.chipIco:focus-visible::after{opacity:1;translate:-50% 0}
+.c-mag::after,.c-cloud::after{left:0;translate:0 8px}
+.c-mag:hover::after,.c-cloud:hover::after,.c-mag:focus-visible::after,.c-cloud:focus-visible::after{translate:0 0}
+.c-pwa::after,.c-gql::after,.c-adobe::after{left:auto;right:0;translate:0 8px}
+.c-pwa:hover::after,.c-gql:hover::after,.c-adobe:hover::after,
+.c-pwa:focus-visible::after,.c-gql:focus-visible::after,.c-adobe:focus-visible::after{translate:0 0}
 .c-mag{top:8%;left:14%}
 .c-pwa{top:12%;right:4%;animation-delay:-1.5s}
 .c-cloud{top:38%;left:2%;animation-delay:-3s}
 .c-gql{top:47%;right:0;animation-delay:-4.5s}
 .c-adobe{top:70%;right:9%;animation-delay:-2.2s}
-.c-adobe::after{content:"";position:absolute;right:-2px;bottom:-2px;width:20px;height:20px;border-radius:50%;
+.c-adobe::before{content:"";position:absolute;right:-2px;bottom:-2px;z-index:2;width:20px;height:20px;border-radius:50%;
   background:#16a34a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 13 4 4 10-10'/%3E%3C/svg%3E") center/12px no-repeat;
   border:2px solid #081020}
 .c-gql{top:48%;right:0;animation-delay:-4.5s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -12px}}
 .codeBg{position:absolute;z-index:1;top:2%;left:50%;transform:translateX(-50%);
   width:104%;height:86%;border-radius:22px;overflow:hidden;
   background:rgba(5,12,26,.5);border:1px solid rgba(255,255,255,.09);
@@ -160,7 +176,17 @@ section{padding:64px 0}
 
 /* experience timeline */
 .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative}
-.timeline::before{content:"";position:absolute;top:28px;left:8%;right:8%;border-top:2px dashed var(--line)}
+.timeline .climb{position:absolute;left:0;top:0;width:100%;height:120px;overflow:hidden;pointer-events:none;z-index:0}
+.timeline article.tl{position:relative;z-index:1;transition:translate .3s cubic-bezier(.2,.9,.3,1.2)}
+.timeline article.tl:nth-of-type(1){margin-top:56px}
+.timeline article.tl:nth-of-type(2){margin-top:28px}
+.timeline article.tl:hover{translate:0 -6px}
+.timeline article.tl:hover .bubble{scale:1.08}
+.tl .bubble{transition:scale .3s cubic-bezier(.2,.9,.3,1.3)}
+@media(max-width:980px){
+  .timeline .climb{display:none}
+  .timeline article.tl:nth-of-type(1),.timeline article.tl:nth-of-type(2){margin-top:0}
+}
 .tl{position:relative;padding-left:0}
 .tl .bubble{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;
   margin-bottom:16px;box-shadow:0 10px 24px rgba(37,99,235,.28);position:relative;z-index:1}
@@ -361,15 +387,15 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
     <span class="glow"></span>
     <img class="portrait" src="assets/tarun-cutout.png" alt="Portrait of Tarun Mahajan" fetchpriority="high">
 
-    <span class="chipIco c-mag" title="Magento 2">
+    <span class="chipIco c-mag" data-tip="Magento 2 — the platform behind most of the stores I build" role="img" aria-label="Magento 2" tabindex="0">
       <svg viewBox="0 0 24 24" fill="#f26322"><path d="M12 0 2 5.75v12.5L5.2 20V7.6L12 3.7l6.8 3.9V20L22 18.25V5.75L12 0Zm0 7.1-3.2 1.85v11.2L12 22l3.2-1.85V8.95L12 7.1Z"/></svg></span>
-    <span class="chipIco c-pwa" title="PWA">
+    <span class="chipIco c-pwa" data-tip="PWA — app-like storefronts that load fast on any device" role="img" aria-label="PWA" tabindex="0">
       <svg viewBox="0 0 40 24"><text x="20" y="17" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="800" fill="#a78bfa">PWA</text></svg></span>
-    <span class="chipIco c-cloud" title="Cloud Commerce">
+    <span class="chipIco c-cloud" data-tip="Cloud Commerce — hosting, deploys and scaling for busy stores" role="img" aria-label="Cloud Commerce" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 9.2 4.4 4.4 0 0 0 7 18Z"/></svg></span>
-    <span class="chipIco c-gql" title="GraphQL">
+    <span class="chipIco c-gql" data-tip="GraphQL — the API layer that feeds headless storefronts" role="img" aria-label="GraphQL" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="#e535ab" stroke-width="1.6"><path d="M12 3 4 17h16L12 3Z"/><circle cx="12" cy="3" r="2" fill="#e535ab"/><circle cx="4" cy="17" r="2" fill="#e535ab"/><circle cx="20" cy="17" r="2" fill="#e535ab"/></svg></span>
-    <span class="chipIco c-adobe" title="Adobe Certified Professional — Adobe Commerce Developer">
+    <span class="chipIco c-adobe" data-tip="Adobe Certified Professional — Adobe Commerce Developer" role="img" aria-label="Adobe Certified Professional" tabindex="0">
       <svg viewBox="0 0 24 24" fill="#EB1000"><path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624z"/></svg></span>
 
     <div class="codeBg" aria-hidden="true">
@@ -462,14 +488,22 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
  <div class="wrap">
   <div class="head"><h2>Professional experience</h2></div>
   <div class="timeline">
-    <article class="tl green">
-      <span class="bubble" style="background:linear-gradient(140deg,#2563eb,#3b82f6)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V6l7-3v18M11 21h9V10h-9"/></svg></span>
-      <h3>Associate Team Lead</h3>
-      <div class="co">Vtnetzwelt, Mohali</div>
-      <div class="when">Oct 2020 – Present · 6+ years</div>
-      <p>Leading eCommerce delivery on Magento 2, Adobe Commerce, PWA, Headless, GraphQL and
-         Cloud Commerce, from architecture through to release.</p>
+    <svg class="climb" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="climbGrad" x1="0" y1="1" x2="1" y2="0">
+        <stop stop-color="#0d9488"/><stop offset=".5" stop-color="#7c5cff"/><stop offset="1" stop-color="#3b82f6"/>
+      </linearGradient></defs>
+      <path d="M2.4 84 L36.4 56 L70.5 28" fill="none" stroke="url(#climbGrad)" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"
+            vector-effect="non-scaling-stroke" opacity=".5"/>
+    </svg>
+    <article class="tl">
+      <span class="bubble" style="background:linear-gradient(140deg,#0d9488,#22d3ee)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span>
+      <h3>Software Engineer</h3>
+      <div class="co">Envision Ecommerce, Mohali</div>
+      <div class="when">Jan 2017 – Jan 2018</div>
+      <p>Started my career in eCommerce development, building Magento stores and
+         client-facing store features.</p>
     </article>
     <article class="tl">
       <span class="bubble" style="background:linear-gradient(140deg,#7c5cff,#a78bfa)">
@@ -480,14 +514,14 @@ footer{background:linear-gradient(160deg,#050b18,#0a1730);color:#c3d4ea;padding:
       <p>Built and maintained Magento eCommerce applications for international clients,
          covering custom features, integrations and performance work.</p>
     </article>
-    <article class="tl">
-      <span class="bubble" style="background:linear-gradient(140deg,#0d9488,#22d3ee)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span>
-      <h3>Software Engineer</h3>
-      <div class="co">Envision Ecommerce, Mohali</div>
-      <div class="when">Jan 2017 – Jan 2018</div>
-      <p>Started my career in eCommerce development, building Magento stores and
-         client-facing store features.</p>
+    <article class="tl green">
+      <span class="bubble" style="background:linear-gradient(140deg,#2563eb,#3b82f6)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V6l7-3v18M11 21h9V10h-9"/></svg></span>
+      <h3>Associate Team Lead</h3>
+      <div class="co">Vtnetzwelt, Mohali</div>
+      <div class="when">Oct 2020 – Present · 6+ years</div>
+      <p>Leading eCommerce delivery on Magento 2, Adobe Commerce, PWA, Headless, GraphQL and
+         Cloud Commerce, from architecture through to release.</p>
     </article>
   </div>
  </div>
